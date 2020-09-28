@@ -1,0 +1,10 @@
+noOfEle = int(input())
+arr = [int(ele) for ele in input().split()]
+searchEle = int(input())
+
+for i in range(noOfEle):
+    if arr[i] == searchEle:
+        print('Found and its index = ',i)
+        break
+else:
+    print('Not Found')
