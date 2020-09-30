@@ -1,0 +1,19 @@
+def binarySearch(a, x):
+    s = 0
+    e = len(a) - 1
+    while s <= e:
+        mid = (s+e) // 2
+        if a[mid] == x:
+            print('Element found at index :',mid)
+            break
+        elif a[mid] < x:
+            s = mid + 1
+        else:
+            e = mid - 1
+    else:
+        print('Element not found')
+
+n = int(input())
+arr = [int(ele) for ele in input().split()]
+x = int(input())
+binarySearch(arr, x)
