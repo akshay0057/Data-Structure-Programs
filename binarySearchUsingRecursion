@@ -1,0 +1,16 @@
+def binary_search(arr, x, start, end):
+    mid = (start + end) // 2
+    if start > end:
+        return -1
+    if arr[mid] == x:
+        return mid
+    elif x < arr[mid]:
+        return binary_search(arr, x, start, mid - 1)
+    else:
+        return binary_search(arr, x, mid + 1, end)
+
+n = int(input())
+arr = [int(ele) for ele in input().split()]
+x = int(input())
+output = binary_search(arr, x, 0, n - 1)
+print(output)
