@@ -1,0 +1,32 @@
+def mergeSort(arr):
+    if len(arr) == 0 or len(arr) == 1:
+        return
+    mid = len(arr) // 2
+    arr1 = arr[:mid]
+    arr2 = arr[mid:]
+    mergeSort(arr1)
+    mergeSort(arr2)
+
+    i = j = k = 0
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] < arr2[j]:
+            arr[k] = arr1[i]
+            i += 1
+        else:
+            arr[k] = arr2[j]
+            j += 1
+        k += 1
+
+    if i < len(arr1):
+        for i in range(i, len(arr1)):
+            arr[k] = arr1[i]
+            k += 1
+    else:
+        for j in range(j, len(arr2)):
+            arr[k] = arr2[j]
+            k += 1
+
+n = int(input())
+arr = [int(ele) for ele in input().split()]
+mergeSort(arr)
+print(arr)
