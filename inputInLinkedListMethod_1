@@ -1,0 +1,22 @@
+class node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+'''This is first input in linked list from user with time complexity is O(n2)'''
+def takeInput1():
+    lst = [int(ele) for ele in input().split()]
+    head = None
+    for ele in lst:
+        newNode = node(ele)
+        if head is None:
+            head = newNode
+        else:
+            temp = head
+            while temp.next is not None:
+                temp = temp.next
+            temp.next = newNode
+    return head
+
+head = takeInput1()
