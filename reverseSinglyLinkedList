@@ -1,0 +1,43 @@
+class node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def reverseLL(head):
+    pre = None
+    curr = head
+    while curr is not None:
+        nextNode = curr.next
+        curr.next = pre
+
+        pre = curr
+        curr = nextNode
+
+    return pre
+
+def takeInput2():
+    lst = [int(ele) for ele in input().split()]
+    lastNode = None
+    head = None
+    for ele in lst:
+        newNode = node(ele)
+        if head is None:
+            head = newNode
+            lastNode = head
+        else:
+            lastNode.next = newNode
+            lastNode = lastNode.next
+    return head
+
+def printLL(head):
+    temp = head
+    while temp is not None:
+        print(str(temp.data)+'->',end='')
+        temp = temp.next
+    print('None')
+
+
+head = takeInput2()
+printLL(head)
+head = reverseLL(head)
+printLL(head)
