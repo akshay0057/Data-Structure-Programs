@@ -1,0 +1,67 @@
+class node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def takeInput2():
+    lst = [int(ele) for ele in input().split()]
+    lastNode = None
+    head = None
+    for ele in lst:
+        newNode = node(ele)
+        if head is None:
+            head = newNode
+            lastNode = head
+        else:
+            lastNode.next = newNode
+            lastNode = lastNode.next
+    return head
+
+def printLL(head):
+    temp = head
+    while temp is not None:
+        print(str(temp.data)+'->',end='')
+        temp = temp.next
+    print('None')
+
+def swapNode(head, x, y):
+    if head is None:
+        return
+
+    if x == y:
+        return head
+
+    pre_x = None
+    curr_x = head
+    while curr_x is not None and curr_x.data != x:
+        pre_x = curr_x
+        curr_x = curr_x.next
+
+    pre_y = None
+    curr_y = head
+    while curr_y is not None and curr_y.data != y:
+        pre_y = curr_y
+        curr_y = curr_y.next
+
+    if curr_x is None or curr_y is None:
+        return
+
+    if pre_x is None:
+        head = curr_y
+    else:
+        pre_x.next = curr_y
+
+    if pre_y is None:
+        head = curr_x
+    else:
+        pre_y.next = curr_x
+
+    temp = curr_x.next
+    curr_x.next = curr_y.next
+    curr_y.next = temp
+    return head
+
+head = takeInput2()
+printLL(head)
+head1 = swapNode(head, 3, 6)
+printLL(head1)
