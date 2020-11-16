@@ -1,0 +1,30 @@
+from math import ceil
+
+def countBracketReversals(inputString):
+    if len(inputString) % 2 != 0:
+        return -1
+
+    stack = []
+    for char in inputString:
+        if char == '{':
+            stack.append(char)
+        if char == '}':
+            if len(stack) == 0 or stack[-1] == '}':
+                stack.append(char)
+            elif stack[-1] == '{':
+                stack.pop()
+
+    noOfOpenBraces = noOfCloseBraces = 0
+    for char in stack:
+        if char == '{':
+            noOfOpenBraces += 1
+        else:
+            noOfCloseBraces += 1
+    return ceil(noOfOpenBraces / 2) + ceil(noOfCloseBraces / 2)
+
+
+
+# main
+expression = input('Enter a Expression (Contain only "{" or "}") : ')
+result = countBracketReversals(expression)
+print(result)
