@@ -1,0 +1,21 @@
+def stockSpan(price, n):
+    stk = []
+    stk.append(0)
+    stock = []
+    stock.append(1)
+    for i in range(1, n):
+        while len(stk) > 0 and price[stk[-1]] < price[i]:
+            stk.pop()
+        if len(stk) == 0:
+            stock.append(i + 1)
+        else:
+            stock.append(i - stk[-1])
+
+        stk.append(i)
+    return stock
+
+
+prices = [int(x) for x in input().split()]
+stock = stockSpan(prices, len(prices))
+for ele in stock:
+    print(ele, end = ' ')
