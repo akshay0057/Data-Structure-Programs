@@ -1,0 +1,21 @@
+def reverseStack(s1, s2):
+    if len(s1) == 0:return
+    if len(s1) == 1:return s1
+
+    while len(s1) != 1:
+        s2.append(s1.pop())
+    lastEle = s1.pop()
+
+    while len(s2) != 0:
+        s1.append(s2.pop())
+
+    reverseStack(s1, s2)
+    s1.append(lastEle)
+
+
+
+n = int(input())
+stack = [int(ele) for ele in input().split()]
+emptyStack = [ ]
+reverseStack(stack, emptyStack)
+print(*stack)
