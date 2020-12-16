@@ -1,0 +1,44 @@
+class Queue:
+    def __init__(self):
+        self.__q = [ ]
+        self.__count = 0
+        self.__front = -1
+
+    def enqueue(self, item):
+        if self.size() == 0:
+            self.__front = 0
+        self.__q.append(item)
+        self.__count = self.__count + 1
+
+    def dequeue(self):
+        if self.isEmpty():
+            print('Queue is empty')
+        else:
+            ele = self.__q[self.__front]
+            self.__front = self.__front + 1
+            self.__count = self.__count - 1
+            return ele
+
+    def size(self):
+        return self.__count
+
+    def front(self):
+        if self.size() == 0:
+            return -1
+        return self.__q[self.__front]
+
+    def isEmpty(self):
+        return self.size() == 0
+
+
+q = Queue()
+q.enqueue(10)
+q.enqueue(20)
+q.enqueue(30)
+q.enqueue(40)
+print(q.front())
+print(q.dequeue())
+print(q.front())
+q.enqueue(100)
+print(q.front())
+
