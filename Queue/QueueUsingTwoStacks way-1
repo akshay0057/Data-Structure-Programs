@@ -1,0 +1,50 @@
+'''
+enqueue - O(1)
+dequeue - O(n)
+'''
+
+class queueUsingTwoStack:
+    def __init__(self):
+        self.stack1 = [ ]
+        self.stack2 = [ ]
+
+    def enqueue(self, data):
+        self.stack1.append(data)
+
+    def dequeue(self):
+        if self.isEmpty():
+            print('Qeueue is Empty')
+        else:
+            while len(self.stack1) != 1:
+                ele = self.stack1.pop()
+                self.stack2.append(ele)
+            x = self.stack1.pop()
+            while len(self.stack2) != 0:
+                self.stack1.append(self.stack2.pop())
+            return x
+
+    def size(self):
+        return len(self.stack1)
+
+    def front(self):
+        if self.size() == 0:
+            print('Qeueue is Empty')
+        else:
+            return self.stack1[0]
+
+    def isEmpty(self):
+        return self.size() == 0
+
+
+q = queueUsingTwoStack()
+q.enqueue(10)
+q.enqueue(20)
+q.enqueue(30)
+q.enqueue(40)
+print(q.dequeue())
+print(q.dequeue())
+print(q.size())
+print(q.front())
+print(q.isEmpty())
+
+
